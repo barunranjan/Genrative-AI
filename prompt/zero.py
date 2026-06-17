@@ -14,7 +14,7 @@ response = client.chat.completions.create(
     model="gemini-2.5-flash",
     messages=[
         {"role":"system", "content":SYSTEM_PROMPT},
-        {"role":"user", "content":"can you tell me a joke"}
+        {"role":"user", "content":"can you tell a + b whole square"}
 
     ]
 )

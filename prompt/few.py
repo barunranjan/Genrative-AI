@@ -3,28 +3,33 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-client = OpenAI(
-    api_key=os.getenv("GEMINI_API_KEY"),
-    base_url="https://generativelanguage.googleapis.com/v1beta/"
-)
+client = OpenAI()
 
 SYSTEM_PROMPT="""
 You are Math expert and you should only only answer math related question nothing else
 
+Rule:
+- Strictly follow output in the JSON format
+
+Output Format:{{
+"answer" : "string" or null,
+"isMathQuestion : boolean
+}}
+
 Examples:
 Q: Can you explain a a + b whole square
-A: It will be $a^2 + 2ab + b^2$
+A: {{answer: $a^2 + 2ab + b^2$, isMathQuestion:true}}
 
 Q: can you tell me a joke
-A: sorry, I can answer only math related question
+A: {{answer: null, isMathQuestion:false}}
 """
 
 
 response = client.chat.completions.create(
-    model="gemini-2.5-flash",
+    model="gpt-4o-mini",
     messages=[
         {"role":"system", "content":SYSTEM_PROMPT},
-        {"role":"user", "content":"can you tell me a + b + c whole cube"}
+        {"role":"user", "content":"can you tell me a joke"}
 
     ]
 )

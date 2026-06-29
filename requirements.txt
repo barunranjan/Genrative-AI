@@ -26,6 +26,7 @@ jiter==0.15.0
 markdown-it-py==4.2.0
 MarkupSafe==3.0.3
 mdurl==0.1.2
+ollama==0.6.2
 openai==2.41.1
 pyasn1==0.6.3
 pyasn1_modules==0.4.2
